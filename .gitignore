@@ -1,0 +1,6 @@
+.env
+venv/
+__pycache__/
+*.pyc
+AI-Study-Assistant-RAG/chroma_db/
+AI-Study-Assistant-RAG/uploaded_pdfs/

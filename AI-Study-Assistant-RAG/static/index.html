@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Assistant | RAG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">✦</div><div><strong>StudySpace</strong><small>AI learning companion</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <div class="nav-item active"><span>▦</span> Study Assistant</div>
+      <div class="side-label library-label">YOUR LIBRARY</div>
+      <div class="library-head"><span>PDF Chapters</span><span class="count" id="docCount">0</span></div>
+      <div id="docList" class="doc-list"><p class="empty-docs">No PDFs added yet.</p></div>
+      <div class="sidebar-bottom"><div class="tip-icon">✧</div><div><b>Study smarter</b><p>Ask questions from your own learning material.</p></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">✦</span> StudySpace</div>
+        <div class="crumb">Workspace <span>/</span> <b>Study Assistant</b></div>
+        <div class="status"><i id="statusDot"></i><span id="statusText">Checking API...</span></div>
+      </header>
+
+      <section class="content">
+        <div class="welcome">
+          <div class="eyebrow"><span class="spark">✦</span> YOUR PERSONAL AI TUTOR</div>
+          <h1>Learn anything, <em>one question</em><br class="desktop-break"> at a time.</h1>
+          <p class="intro">Upload your chapter PDFs and get clear, context-based answers powered by RAG.</p>
+        </div>
+
+        <section class="upload-card">
+          <div class="section-title"><div class="section-icon">↥</div><div><h2>Add your study material</h2><p>Upload up to 5 PDF chapters to build your knowledge library.</p></div></div>
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
+            <div class="upload-symbol">⇧</div>
+            <b>Drag & drop your PDF files here</b>
+            <span>or <button id="browseBtn" class="text-button">browse files</button> from your computer</span>
+            <small>PDF format only · Select up to 5 chapters</small>
+          </div>
+          <div id="selectedFiles" class="selected-files"></div>
+          <div class="upload-actions"><span id="uploadHint">Your files are processed and indexed locally.</span><button id="uploadBtn" class="primary-btn" disabled>Upload & Index <span>→</span></button></div>
+          <div id="uploadMessage" class="message" aria-live="polite"></div>
+        </section>
+
+        <section class="ask-card">
+          <div class="section-title"><div class="section-icon ask-icon">✧</div><div><h2>Ask your study assistant</h2><p>Ask anything related to your uploaded chapters.</p></div></div>
+          <form id="askForm">
+            <label for="question">YOUR QUESTION</label>
+            <div class="question-box"><textarea id="question" rows="2" placeholder="e.g. What are the key concepts in Chapter 1?" required></textarea><button type="submit" id="askBtn" class="ask-btn" disabled>Ask AI <span>✦</span></button></div>
+          </form>
+          <div class="suggestions"><span>TRY ASKING</span><button class="suggestion">Summarize the main ideas</button><button class="suggestion">Explain the key concepts</button><button class="suggestion">Create revision notes</button></div>
+          <div id="answerWrap" class="answer-wrap hidden">
+            <div class="answer-heading"><div class="answer-avatar">✦</div><div><b>AI Study Assistant</b><small>Generated from your PDF context</small></div><button id="copyBtn" class="copy-btn">Copy answer</button></div>
+            <div id="answer" class="answer"></div>
+            <div id="sources" class="sources"></div>
+          </div>
+          <div id="askMessage" class="message" aria-live="polite"></div>
+        </section>
+        <footer>Built with FastAPI · ChromaDB · Sentence Transformers · Groq</footer>
+      </section>
+    </main>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>

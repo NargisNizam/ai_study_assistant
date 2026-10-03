@@ -1,6 +1,9 @@
 .env
+**/.env
 venv/
+**/venv/
 __pycache__/
+**/__pycache__/
 *.pyc
-AI-Study-Assistant-RAG/chroma_db/
-AI-Study-Assistant-RAG/uploaded_pdfs/
+**/chroma_db/
+**/uploaded_pdfs/
